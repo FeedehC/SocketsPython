@@ -5,10 +5,10 @@ matrixB = 'postmult_B_stream_fixed.out'
 matrixA = 'premult_A_stream_fixed.out'
 
 HEADER = 64
-PORT = 5050
+PORT = 7
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "127.0.1.1" #IP del server al que me quiero conectar
+SERVER = "172.16.0.91" #IP del server al que me quiero conectar
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,22 +24,27 @@ def send(msg):
     print(client.recv(2048).decode(FORMAT))
     
 
+send("Somos la fundacion fulgor".encode(FORMAT))
+
+
 ##################-Enviar Matrix A-################
-with open(matrixA) as f_obj:
-    send("  ######## Envio Matrix A ########  ")
-    for line in f_obj:
-        lineSplit = line.split()
-        for elemento in lineSplit:
-            send(elemento)
+#with open(matrixA) as f_obj:
+    #send("  ######## Envio Matrix A ########  ")
+    #for line in f_obj:
+        #lineSplit = line.split()
+        #for elemento in lineSplit:
+            #send(elemento)
 
 ##################-Enviar Matrix B-################
-with open(matrixB) as f_obj:
-    send("  ######## Envio Matrix B ########  ")
-    for line in f_obj:
-        lineSplit = line.split()
-        for elemento in lineSplit:
-            send(elemento)
-    send(DISCONNECT_MESSAGE)
+#with open(matrixB) as f_obj:
+    #send("  ######## Envio Matrix B ########  ")
+    #for line in f_obj:
+        #lineSplit = line.split()
+        #for elemento in lineSplit:
+            #send(elemento)
+
+
+send(DISCONNECT_MESSAGE)
 
 
 

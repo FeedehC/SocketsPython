@@ -2,8 +2,9 @@ import socket
 import threading
 
 HEADER = 64
-PORT = 5050
-SERVER = socket.gethostbyname(socket.gethostname()) #Esta linea averigua la IP privada de este dispositivo
+PORT = 7
+SERVER = "172.16.0.91" #Kintex 68A
+#SERVER = socket.gethostbyname(socket.gethostname()) #Esta linea averigua la IP privada de este dispositivo
 ADDR = (SERVER,PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
