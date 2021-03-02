@@ -33,6 +33,7 @@ with open(matrixA) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
+            elemento = bytes(elemento)
             send_to_server(elemento)
 
 ##################-Enviar Matrix B-################
