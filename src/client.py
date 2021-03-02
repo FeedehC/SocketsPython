@@ -24,7 +24,7 @@ def send(msg):
     print(client.recv(2048).decode(FORMAT))
     
 
-send("Somos la fundacion fulgor".encode(FORMAT))
+send("Somos la fundacion fulgor")
 
 
 ##################-Enviar Matrix A-################
