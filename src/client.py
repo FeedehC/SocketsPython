@@ -22,7 +22,7 @@ def send_to_server(msg):
     #send_length += b' ' * (HEADER - len(send_length)) #Se hace padding agregando caracteres blancos, cantidad: 64-len
     #client.send(send_length) #Primero se envia la longitud de todo el mensaje, completado con espacios hasta 64 bytes
     client.sendall(message) #Se envia el mensaje completo
-    print(client.recv(2048).decode(FORMAT))
+    #print(client.recv(2048).decode(FORMAT))
     
 
 send_to_server("Somos la fundacion fulgor")
@@ -32,7 +32,7 @@ send_to_server("Somos la fundacion fulgor")
 with open(matrixA) as f_obj:
     send_to_server("  ######## Envio Matrix A ########  ")
     for line in f_obj:
-        lineSplit = line.split(9)
+        lineSplit = line.split('    ')
         for elemento in lineSplit:
             send_to_server(elemento)
 
