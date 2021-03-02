@@ -15,7 +15,8 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
 
 def send_to_server(msg):
-    message = msg.encode(FORMAT)
+    #message = msg.encode(FORMAT)
+    message = bytearray(msg, FORMAT)
     #msg_length = len(message)
     #send_length = str(msg_length).encode(FORMAT)
     #send_length += b' ' * (HEADER - len(send_length)) #Se hace padding agregando caracteres blancos, cantidad: 64-len
@@ -33,7 +34,6 @@ with open(matrixA) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
-            elemento = bytes(elemento.encode(FORMAT))
             send_to_server(elemento)
 
 ##################-Enviar Matrix B-################
@@ -42,7 +42,6 @@ with open(matrixB) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
-            elemento = bytes(elemento.encode(FORMAT))
             send_to_server(elemento)
 
 send_to_server(DISCONNECT_MESSAGE)
