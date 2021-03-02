@@ -28,21 +28,20 @@ send_to_server("Somos la fundacion fulgor")
 
 
 ##################-Enviar Matrix A-################
-#with open(matrixA) as f_obj:
-    #send_to_server("  ######## Envio Matrix A ########  ")
-    #for line in f_obj:
-        #lineSplit = line.split()
-        #for elemento in lineSplit:
-            #send_to_server(elemento)
+with open(matrixA) as f_obj:
+    send_to_server("  ######## Envio Matrix A ########  ")
+    for line in f_obj:
+        lineSplit = line.split()
+        for elemento in lineSplit:
+            send_to_server(elemento)
 
 ##################-Enviar Matrix B-################
-#with open(matrixB) as f_obj:
-    #send_to_server("  ######## Envio Matrix B ########  ")
-    #for line in f_obj:
-        #lineSplit = line.split()
-        #for elemento in lineSplit:
-            #send_to_server(elemento)
-
+with open(matrixB) as f_obj:
+    send_to_server("  ######## Envio Matrix B ########  ")
+    for line in f_obj:
+        lineSplit = line.split()
+        for elemento in lineSplit:
+            send_to_server(elemento)
 
 send_to_server(DISCONNECT_MESSAGE)
 
