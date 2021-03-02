@@ -33,7 +33,7 @@ with open(matrixA) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
-            elemento = bytes(elemento)
+            elemento = bytes(elemento.encode(FORMAT))
             send_to_server(elemento)
 
 ##################-Enviar Matrix B-################
@@ -42,7 +42,7 @@ with open(matrixB) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
-            elemento = bytes(elemento)
+            elemento = bytes(elemento.encode(FORMAT))
             send_to_server(elemento)
 
 send_to_server(DISCONNECT_MESSAGE)
