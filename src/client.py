@@ -8,7 +8,7 @@ HEADER = 64
 PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "192.168.1.37"
+SERVER = "127.0.1.1" #IP del server al que me quiero conectar
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,9 +18,9 @@ def send(msg):
     message = msg.encode(FORMAT)
     msg_length = len(message)
     send_length = str(msg_length).encode(FORMAT)
-    send_length += b' ' *(HEADER - len(send_length))
-    client.send(send_length)
-    client.send(message)
+    send_length += b' ' * (HEADER - len(send_length)) #Se hace padding agregando caracteres blancos, cantidad: 64-len
+    client.send(send_length) #Primero se envia la longitud de todo el mensaje, completado con espacios hasta 64 bytes
+    client.send(message) #Se envia el mensaje completo
     print(client.recv(2048).decode(FORMAT))
     
 
@@ -30,7 +30,6 @@ with open(matrixA) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
-            #send("hola")
             send(elemento)
 
 ##################-Enviar Matrix B-################

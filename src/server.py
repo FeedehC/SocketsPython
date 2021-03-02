@@ -24,20 +24,21 @@ def handle_client(conn, addr):
                 connected = False
 
             print(f"[{addr}] {msg}")
-            conn.send("MSg received".encode(FORMAT))
+            conn.send("Message received".encode(FORMAT))
 
     conn.close()
 
-def start():
+def start_server():
     server.listen()
     print(f"[LISTENING] Server is listening on {SERVER}")
     while True:
         conn, addr = server.accept()
-        thread = threading.Thread(target=handle_client,args=(conn, addr))
+        #Se crea un nuevo thread para ejecutar handle_client(), uno por cada cliente que se quiere conectar
+        thread = threading.Thread(target=handle_client, args=(conn, addr))
         thread.start()
-        print(f"[ACTIVE CONNECTIONS] {threading.activeCount()-1}")
+        print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}") #El numero total de threads menos uno (el main thread)
 
 
 print("[STARTING] server is starting...")
-start()
+start_server()
 
