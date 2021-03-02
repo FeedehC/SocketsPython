@@ -14,7 +14,7 @@ ADDR = (SERVER, PORT)
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
 
-def send(msg):
+def send_to_server(msg):
     message = msg.encode(FORMAT)
     #msg_length = len(message)
     #send_length = str(msg_length).encode(FORMAT)
@@ -24,7 +24,7 @@ def send(msg):
     print(client.recv(2048).decode(FORMAT))
     
 
-send("Somos la fundacion fulgor")
+send_to_server("Somos la fundacion fulgor")
 
 
 ##################-Enviar Matrix A-################
