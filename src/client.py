@@ -42,6 +42,7 @@ with open(matrixB) as f_obj:
     for line in f_obj:
         lineSplit = line.split()
         for elemento in lineSplit:
+            elemento = bytes(elemento)
             send_to_server(elemento)
 
 send_to_server(DISCONNECT_MESSAGE)
