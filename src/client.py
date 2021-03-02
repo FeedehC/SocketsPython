@@ -16,11 +16,11 @@ client.connect(ADDR)
 
 def send(msg):
     message = msg.encode(FORMAT)
-    msg_length = len(message)
-    send_length = str(msg_length).encode(FORMAT)
-    send_length += b' ' * (HEADER - len(send_length)) #Se hace padding agregando caracteres blancos, cantidad: 64-len
-    client.send(send_length) #Primero se envia la longitud de todo el mensaje, completado con espacios hasta 64 bytes
-    client.send(message) #Se envia el mensaje completo
+    #msg_length = len(message)
+    #send_length = str(msg_length).encode(FORMAT)
+    #send_length += b' ' * (HEADER - len(send_length)) #Se hace padding agregando caracteres blancos, cantidad: 64-len
+    #client.send(send_length) #Primero se envia la longitud de todo el mensaje, completado con espacios hasta 64 bytes
+    client.sendall(message) #Se envia el mensaje completo
     print(client.recv(2048).decode(FORMAT))
     
 
